@@ -1,9 +1,12 @@
 import React from 'react'
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
-import { BrowserRouter as Router, Route, Link } from "react-router-dom"
+import { Router, Route } from "react-router-dom"
 
 import green from '@material-ui/core/colors/green'
-import AuthContainer from '../containers/AuthContainer';
+import history from '../history'
+
+import AuthContainer from '../containers/AuthContainer'
+import ProjectContainer from '../containers/ProjectContainer'
 
 const theme = createMuiTheme({
   palette: {
@@ -16,8 +19,9 @@ function App(props) {
   return (
     <div>
       <MuiThemeProvider theme={theme}>
-        <Router>
-          <Route path="/" exact component={AuthContainer} />
+        <Router history={history}>
+          <Route exact path="/" component={AuthContainer} />
+          <Route path="/projects" component={ProjectContainer} />
         </Router>
       </MuiThemeProvider>
     </div>

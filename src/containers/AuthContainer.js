@@ -14,9 +14,8 @@ class AuthContainer extends React.Component {
 
   render() {
     return (
-      <Auth 
+      <Auth
         setToken={this.props.actions.setToken}
-        redirectTo={()=>{}}
         authenticate={api.authenticate}
       />
     )

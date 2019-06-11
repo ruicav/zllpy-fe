@@ -1,4 +1,5 @@
 import React from 'react'
+import history from '../history'
 
 import {
   Grid,
@@ -29,11 +30,12 @@ const style = theme => ({
   }
 })
 
-const Auth = ( { setToken, redirectTo, authenticate, classes } ) => {
+const Auth = ( { setToken, authenticate, classes } ) => {
   const [values, setValues] = React.useState({
     email: '',
     password: '',
     showPassword: false,
+    showMessage: false
   })
 
   const handleChange = prop => event => {
@@ -50,6 +52,15 @@ const Auth = ( { setToken, redirectTo, authenticate, classes } ) => {
 
   const login = ({email, password}) => {
     authenticate({email, password})
+      .then(token => {
+        if(token) {
+          setToken({token})
+          history.push('/projects')
+        } else {
+          setValues({ ...values, showMessage: true })
+        }
+        return token
+      })
   }
 
   return (
@@ -100,6 +111,12 @@ const Auth = ( { setToken, redirectTo, authenticate, classes } ) => {
           >
             Entrar
           </Button>
+        </Grid>
+        <Grid item>
+          { values.showMessage ?
+          (<Typography>
+            Login inválido
+           </Typography>) : '' }
         </Grid>
       </Card>        
     </Grid>
