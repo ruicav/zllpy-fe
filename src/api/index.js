@@ -44,10 +44,19 @@ const getTimekeepers = () => {
     })
 }
 
+const createTimekeeper = ({ workingTime , workingDate, projectId }) => {
+  return axios.post(
+    '/timekeeper',
+    { workingTime , workingDate, projectId }
+  )
+    .then(()=>history.push('/projects'))
+}
+
 const api = {
   authenticate,
   getProjects,
-  getTimekeepers
+  getTimekeepers,
+  createTimekeeper
 }
 
 export default api

@@ -7,6 +7,7 @@ import history from '../history'
 
 import AuthContainer from '../containers/AuthContainer'
 import ProjectContainer from '../containers/ProjectContainer'
+import TimekeeperContainer from '../containers/TimekeeperContainer'
 
 const theme = createMuiTheme({
   palette: {
@@ -22,6 +23,7 @@ function App(props) {
         <Router history={history}>
           <Route exact path="/" component={AuthContainer} />
           <Route path="/projects" component={ProjectContainer} />
+          <Route path="/timekeeper" component={TimekeeperContainer} />
         </Router>
       </MuiThemeProvider>
     </div>

@@ -22,11 +22,7 @@ class AuthContainer extends React.Component {
   }
 }
 
-// const { getToken } = auth.selectors
-
-const mapStateToProps = state => ({
-  // token: getToken(state),
-})
+const mapStateToProps = state => ({})
 
 const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators({...auth.actions}, dispatch)
